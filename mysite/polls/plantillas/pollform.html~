@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block script %}
+	<script>
+	$(function() {
+		$( "#id_pub_date" ).datepicker();
+	});
+	</script>
+
+{% endblock %}
+{% block contenido %}
+	<form id='formulario' method='post' action=''>{% csrf_token %}
+		{{formulario.as_p}}
+		<p><input type='submit' value='enviar' /></p>
+	</form>
+{% endblock contenido %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block style_css %}
+	
+{% endblock %}
+{% block titulo %}este es mi mundo {% endblock %}
+{% block encabezado %}
+		<h1>Eliminar Pregunta</h1>
+{% endblock %}
+{% block contenido %}
+		{% if latest_poll_list %}
+		<section id='question'>
+			{% for poll in latest_poll_list %}
+		    <div>
+		    	Pregunta: <a href="/polls/{{ poll.id }}/">{{ poll.question }}</a>
+		    	<p>{{ poll.pub_date }}</p>
+		    </div>		   
+			{% endfor %}
+		</section>
+		{% else %}
+			<p>No polls are available.</p>
+		{% endif %}
+{% endblock %}

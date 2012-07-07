@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block encabezado %}
+	<h1>actualizar modelo - {{poll.question}}</h1>
+{% endblock %}
+{% block contenido %}
+	<form action="/polls/actualizar/{{poll.id}}/" method="post">{% csrf_token %}
+		<label>Question:</label><input type="text" name="question" value="{{poll.question}}" />
+		<input type="submit" value="enviar" />
+	</form>
+{% endblock %}

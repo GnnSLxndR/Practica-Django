@@ -1,0 +1,49 @@
+/* algunos ejemplos con CSS */
+body, header, footer, div, h1, h2, ul, li, a, p { 
+	margin:0; padding:0;
+}
+body{
+	width: auto;
+	margin:auto;
+	text-align:center;
+}
+header {
+	background-color:#008500;
+	color:#ffffff;
+}
+h1{
+	text-shadow:1px -2px 2px rgba(0,0,0,0.4);
+}
+nav ul li a{
+	text-decoration:none;
+	color:#fff;
+	margin:10px;
+}
+#menu li{
+	position:relative;
+	display:inline-block;
+}
+#menu li:hover{
+	background-color:rgba(0,0,0,0.3);
+	border-radius: 4px;
+}
+.activo { 
+  font-weight: bold; 
+
+}
+.impar { 
+	background-color:#90EE90; 
+}
+.par { 
+	background-color:#5ACC5A; 
+}
+ div.ui-datepicker{
+ font-size:10px;
+}
+#box{
+	border-radius: 4px;
+	border:1px solid rgba(143,135,135,0.5);
+	box-shadow: 0px 3px 3px rgba(0,0,0,0.4);
+	width: 500px;
+	margin:auto;
+}
