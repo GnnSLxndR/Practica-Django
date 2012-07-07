@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block encabezado %}
+		<h1>Nuevo Comentario</h1>
+{% endblock %}
+{% block contenido %}
+	<h1>{{poll}}</h1>
+	<form id='formulario' method='post' action=''>{% csrf_token %}
+		{{formulario.as_p}}
+		<p><input type='submit' value='enviar' /></p>
+	</form>
+{% endblock contenido %}
