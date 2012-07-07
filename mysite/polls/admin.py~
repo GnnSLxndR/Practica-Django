@@ -11,6 +11,8 @@ class PollAdmin(admin.ModelAdmin):
 		(None, {'fields':['question']}),
 		('Date Information', {'fields':['pub_date']}),
 	]"""
+	search_fields = ['question']
+	date_hierarchy = 'pub_date'
 	list_filter = ['pub_date']
 	list_display = ('question', 'pub_date', 'was_published_recently')
 	fieldsets = [

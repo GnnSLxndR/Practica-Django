@@ -59,6 +59,10 @@ def question(request):
 								 context_instance=RequestContext(request))
 								 
 def new_choice(request):
+
+	"""vista que crea un formulario apartir del modelo.... donde toca seleccionar
+	   en que question agregar el choice pero no es la mejor manera para una vista publica
+	"""
 	if request.method == 'POST':
 		formulario = ChoiceForm(request.POST)
 		if formulario.is_valid():
@@ -113,5 +117,4 @@ def actualizar(request, poll_id):
 	p = Poll.objects.get(pk=poll_id)
 	p.question = request.POST['question']
 	p.save()
-	return render_to_response('detalle.html',{'poll':p},
-								context_instance=RequestContext(request))
+	return HttpResponseRedirect(reverse('polls.views.index'))
