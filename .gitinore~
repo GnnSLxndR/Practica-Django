@@ -1,7 +1,5 @@
 *.[oa]
 *~
-*.pyc
 *.py~
 *.pyc
 *.html~
-*.gitinore~
