@@ -2,7 +2,7 @@
 {% block script %}
 	<script>
 	$(function() {
-		$( "#id_pub_date" ).datepicker({ dateFormat: "yy-mm-dd"});
+		$( "#id_pub_date" ).datepicker({ dateFormat: "yy/mm/dd"});
 	});
 	</script> 
 {% endblock %}
