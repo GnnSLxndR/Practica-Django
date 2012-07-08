@@ -5,7 +5,7 @@ from polls.models import Choice, Poll
 
 class PollForm(ModelForm):
 	question = CharField(max_length=34 ,widget=forms.TextInput(attrs={'class':'special'}))
-	pub_date = DateField(label='hola MUndo')
+	pub_date = DateField(label='fecha de Publicacion')
 	class Meta:
 		model = Poll
 		
