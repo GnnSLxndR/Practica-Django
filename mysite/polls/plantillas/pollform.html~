@@ -2,11 +2,13 @@
 {% block script %}
 	<script>
 	$(function() {
-		$( "#id_pub_date" ).datepicker();
+		$( "#id_pub_date" ).datepicker({ dateFormat: "dd/mm/yy"});
 	});
-	</script>
-
+	</script> 
 {% endblock %}
+{% block encabezado %} 
+	<h1>Nueva Pregunta</h1>
+ {% endblock %}
 {% block contenido %}
 	<form id='formulario' method='post' action=''>{% csrf_token %}
 		{{formulario.as_p}}
