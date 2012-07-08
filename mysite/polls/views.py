@@ -12,6 +12,8 @@ def index(request):
     latest_poll_list = Poll.objects.all().order_by('id')[:5]
     return render_to_response('index.html', {'latest_poll_list': latest_poll_list}, context_instance=RequestContext(request))
 	
+
+
 def detail(request, poll_id):
     #implementar error 404 con Http404
     """
@@ -24,9 +26,15 @@ def detail(request, poll_id):
     return render_to_response('detail.html', {'poll': p},
     							context_instance=RequestContext(request))
 
+
+
+
 def results(request, poll_id):
     p = get_object_or_404(Poll, pk=poll_id)
     return render_to_response('results.html', {'poll': p})
+
+
+
 
 def vote(request, poll_id):
     p = get_object_or_404(Poll, pk=poll_id)
@@ -46,6 +54,8 @@ def vote(request, poll_id):
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls.views.results', args=(p.id,)))
 
+
+
 #vista de formulario
 def question(request):
 	if request.method == 'POST':
@@ -58,7 +68,13 @@ def question(request):
 	return render_to_response('pollform.html', {'formulario':formulario},
 								 context_instance=RequestContext(request))
 								 
+
+
 def new_choice(request):
+
+	"""vista que crea un formulario apartir del modelo.... donde toca seleccionar
+	   en que question agregar el choice pero no es la mejor manera para una vista publica
+	"""
 	if request.method == 'POST':
 		formulario = ChoiceForm(request.POST)
 		if formulario.is_valid():
@@ -69,7 +85,13 @@ def new_choice(request):
 	return render_to_response('choiceform.html', {'formulario':formulario},
 								 context_instance=RequestContext(request))
 
+
+
 def new_choice2(request, poll_id):
+
+	"""vista para ingresar choice a un question ya seleccionada en la pagina Index
+		como debe ser el ingreso de una choice en una vista publica
+	"""
 	poll = Poll.objects.get(pk=poll_id)
 	if request.method == 'POST':
 		choice = Choice(poll=poll)
@@ -82,10 +104,14 @@ def new_choice2(request, poll_id):
 	return render_to_response('choiceform.html', {'formulario':formulario, 'poll':poll},
 								 context_instance=RequestContext(request))
 
+
+
 def delete_question(request, poll_id):
 	p = get_object_or_404(Poll, pk=poll_id)
 	p.delete()
 	return HttpResponseRedirect(reverse('polls.views.index'))
+
+
 
 def delete_choice(request, poll_id):
 	p = get_object_or_404(Poll, pk=poll_id)
@@ -99,18 +125,28 @@ def delete_choice(request, poll_id):
 		selected_choice.delete()
 		return HttpResponseRedirect(reverse('polls.views.results', args=(p.id,)))
 
+
+
+"""las vista detail1 y detalle son la misma vaina :D pero direcciona a una pagina
+   html diferente igual que la vista detail linea 17....
+"""
 def detail1(request, poll_id):
     p = get_object_or_404(Poll, pk=poll_id)
     return render_to_response('detail1.html', {'poll': p},
     							context_instance=RequestContext(request))
 
+
+#vista para ver mismo detalle
 def detalle(request, poll_id):
 	p = get_object_or_404(Poll, pk=poll_id)
 	return render_to_response('detalle.html',{'poll':p},
 								context_instance=RequestContext(request))
 
+
+
 def actualizar(request, poll_id):
 	p = Poll.objects.get(pk=poll_id)
 	p.question = request.POST['question']
+	p.pub_date = request.POST['fecha']
 	p.save()
 	return HttpResponseRedirect(reverse('polls.views.index'))

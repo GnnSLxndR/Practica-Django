@@ -1,10 +1,12 @@
 from polls.models import Poll, Choice
 from django.contrib import admin
 
+#muestra 3 choice ligado a un poll
 class ChoiceInline(admin.TabularInline):
     model = Choice
     extra = 3
 
+#clase para modificar la parte administrativa de django
 class PollAdmin(admin.ModelAdmin):
 	#fields=['pub_date', 'question']
 	"""fieldsets = [

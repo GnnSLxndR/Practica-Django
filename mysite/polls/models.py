@@ -3,6 +3,7 @@ import datetime
 from django.utils import timezone
 from django.db import models
 
+#creacion del modelo poll
 class Poll(models.Model):
 	question = models.CharField(max_length=200)
 	pub_date = models.DateField('date published')
@@ -18,7 +19,7 @@ class Poll(models.Model):
 	was_published_recently.boolean = False
 	was_published_recently.short_description = 'Published recently?'
 		
-	
+#modelo choice
 class Choice(models.Model):
 	poll = models.ForeignKey(Poll)
 	choice = models.CharField(max_length=200)
