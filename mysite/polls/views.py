@@ -136,7 +136,7 @@ def detail1(request, poll_id):
     							context_instance=RequestContext(request))
 
 
-
+#vista para ver mismo detalle
 def detalle(request, poll_id):
 	p = get_object_or_404(Poll, pk=poll_id)
 	return render_to_response('detalle.html',{'poll':p},

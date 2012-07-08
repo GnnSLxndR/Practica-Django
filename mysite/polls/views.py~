@@ -147,5 +147,6 @@ def detalle(request, poll_id):
 def actualizar(request, poll_id):
 	p = Poll.objects.get(pk=poll_id)
 	p.question = request.POST['question']
+	p.pub_date = request.POST['fecha']
 	p.save()
 	return HttpResponseRedirect(reverse('polls.views.index'))
