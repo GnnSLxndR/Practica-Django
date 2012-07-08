@@ -14,7 +14,7 @@ class ChoiceForm(ModelForm):
 		model = Choice
 
 class ChoiceForm2(ModelForm):
-	
+	#exclude para q no salga poll
 	class Meta:
 		model = Choice
 		exclude = ('poll',)
